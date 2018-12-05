@@ -110,11 +110,12 @@ module.exports.parseDailyBeta = html => {
           if (row["Class\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tNbr"] === undefined) {
             return null;
           }
+          var course = row['Course'].trim().split("-");
           return {
             class_number: row["Class\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tNbr"].trim(),
-            course_code: row["Course\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tCode"].trim(),
-            course_name: row["Course\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tTitle"].trim(),
-            course_type: row["Course\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tType"].trim(),
+            course_code: course[0].trim(),
+            course_name: course[1].trim(),
+            course_type: course[2].trim(),
             ltpjc: row["L T P J C"].replace(/ +/g, ""),
             course_option: row[
               "Course\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tOption"
